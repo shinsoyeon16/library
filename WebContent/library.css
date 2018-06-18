@@ -1,0 +1,537 @@
+@charset "UTF-8";
+/* 위에 아이디 폼 */
+.b-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding-left: 10px;
+	width: 100%;
+	height: 30px;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: #3b3c40 repeat-x;
+	z-index: 1000;
+	color: #fff;
+}
+
+.b-header label {
+	color: aliceblue;
+}
+
+.b-header input {
+	border-radius: 2px;
+}
+/*여기까지 아이디 폼*/
+/* UI Object */
+#wrap {
+	width: 100%
+}
+
+.header {
+	height: 200px;
+	width: 100%;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	margin-top: 10px;
+	width: auto;
+	background: #fff
+}
+
+.header>.header-image {
+	height: 200px;
+	width: 100%;
+	position: relative;
+}
+
+#container {
+	_display: inline-block;
+	width: 100%
+}
+
+#container:after {
+	display: block;
+	clear: both;
+	content: ''
+}
+
+.aside {
+	float: left;
+	width: 220px;
+	margin-right: -200px;
+}
+
+#content {
+	margin-left: 250px
+}
+
+#footer {
+	width: 100%
+}
+
+/* Layout Color - 실제 서비스 적용 후 아래 코드는 삭제 하세요 */
+div {
+	margin: 0 0 10px;
+	padding: 10px 0;
+	color: #2d2c2d;
+	font-family: Tahoma;
+	font-size: 14px;
+	font-weight: bold
+}
+
+#wrap {
+	width: auto;
+	margin: 0;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background: #fff /*흰색*/
+}
+
+#container {
+	width: auto;
+	background: #fff /*흰색*/
+}
+
+#content {
+	margin-top: 10px;
+	border: 2px solid #ccc;
+	background: #fff;
+}
+
+.aside {
+	background: #fff;
+	text-align: center;
+}
+
+#content {
+	height: 1000%;
+}
+
+#footer {
+	width: auto;
+	padding: 10px;
+	border: 2px solid #ccc;
+	background: #e5e5e5
+}
+
+.inno1 {
+	position: relative;
+	float: left;
+	width: 45%;
+	height: 250px;
+	margin-top: 50px;
+	margin-left: 15px;
+}
+
+.inno2 {
+	float: right;
+	width: 45%;
+	height: 250px;
+	margin-top: 50px;
+	padding-left: 15px;
+}
+
+@media only screen and (max-width: 350px) , only screen and
+	(max-device-width: 350px) {
+	.inno1, .inno2, .inno3, .inno4 {
+		width: 200px;
+		padding: 4px;
+	}
+}
+
+/* //UI Object */
+/*mainpage 소스 여기서 부터 */
+
+/* set border-box so that percents can be used for width, padding, etc (personal preference) */
+.cycle-slideshow, .cycle-slideshow * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cycle-slideshow {
+	width: 70%;
+	min-width: 200px;
+	max-width: 800px;
+	margin: 10px auto;
+	padding: 0;
+	position: relative;
+}
+
+/* slideshow images (for most of the demos, these are the actual "slides") */
+.cycle-slideshow img {
+	/*
+            some of these styles will be set by the plugin (by default) but setting them here
+            helps avoid flash-of-unstyled-content
+            */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 0;
+	display: block;
+}
+
+/* in case script does not load */
+.cycle-slideshow img:first-child {
+	position: static;
+	z-index: 100;
+}
+
+/* pager */
+.cycle-pager {
+	text-align: center;
+	width: 100%;
+	z-index: 500;
+	position: absolute;
+	top: 10px;
+	overflow: hidden;
+}
+
+.cycle-pager span {
+	font-family: arial;
+	font-size: 50px;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	color: #ddd;
+	cursor: pointer;
+}
+
+.cycle-pager span.cycle-pager-active {
+	color: #D69746;
+}
+
+.cycle-pager>* {
+	cursor: pointer;
+}
+
+/* caption */
+.cycle-caption {
+	position: absolute;
+	color: white;
+	bottom: 15px;
+	right: 15px;
+	z-index: 700;
+}
+
+/* overlay */
+.cycle-overlay {
+	font-family: tahoma, arial;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 600;
+	background: black;
+	color: white;
+	padding: 15px;
+	opacity: .5;
+}
+
+/* prev / next links */
+.cycle-prev, .cycle-next {
+	position: absolute;
+	top: 0;
+	width: 30%;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	z-index: 800;
+	height: 100%;
+	cursor: pointer;
+}
+
+.cycle-prev {
+	left: 0;
+	background: url(http://malsup.github.com/images/left.png) 50% 50%
+		no-repeat;
+}
+
+.cycle-next {
+	right: 0;
+	background: url(http://malsup.github.com/images/right.png) 50% 50%
+		no-repeat;
+}
+
+.cycle-prev:hover, .cycle-next:hover {
+	opacity: .7;
+	filter: alpha(opacity = 70)
+}
+
+.disabled {
+	opacity: .5;
+	filter: alpha(opacity = 50);
+}
+
+/* display paused text on top of paused slideshow */
+.cycle-paused:after {
+	content: 'Paused';
+	color: white;
+	background: black;
+	padding: 10px;
+	z-index: 500;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border-radius: 10px;
+	opacity: .5;
+	filter: alpha(opacity = 50);
+}
+
+/*
+            media queries
+            some style overrides to make things more pleasant on mobile devices
+        */
+@media only screen and (max-width: 480px) , only screen and
+	(max-device-width: 480px) {
+	.cycle-slideshow {
+		width: 200px;
+	}
+	.cycle-overlay {
+		padding: 4px
+	}
+	.cycle-caption {
+		bottom: 4px;
+		right: 4px
+	}
+}
+/*여기까지가 mainpage슬라이드 소스*/
+/*여기서부터 메뉴바 소스*/
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+.main-menu {
+	width: 210px;
+	background: #A0A0C8;
+}
+
+.main-menu a {
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: #fff;
+	display: block;
+	padding: 8px 0 8px 16px;
+	border-bottom: 1px dotted gray;
+}
+
+.main-menu a:hover {
+	background: #3C3C8C;
+}
+
+.main-menu-ul ul {
+	display: none;
+	background: #B4B4DC;
+}
+
+.main-menu-ul li:hover ul {
+	display: block;
+}
+
+.main-menu-ul ul a:before {
+	content: '\203A';
+	margin-right: 10px;
+}
+
+.main-menu .sub-arrow:after {
+	content: '\203A';
+	float: right;
+	margin-right: 10px;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+}
+
+.main-menu li:hover, .sub-arrow:after {
+	content: '\2039';
+}
+
+/*여기까지 메뉴바 소스*/
+
+/*레이아웃 박스 소스*/
+.box {
+	width: 100%;
+	height: 250px;
+	padding: 25px;
+	z-index: 1;
+	background: darkgray;
+	overflow: auto;
+	border: 1px solid rgba(0.0 .0 . .2);
+	border-radius: 5px;
+	transition: .5s;
+	list-style: disc;
+}
+
+.box h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 24px;
+	transition: .5s;
+}
+
+.box p {
+	transition: .5s;
+}
+
+.box:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	background: #25383C;
+	z-index: -1;
+	border-radius: 5px;
+	transition: .5s;
+}
+
+.box:hover:before {
+	width: 100%;
+	height: 100%;
+}
+
+.box:hover h1, .box:hover p {
+	color: white;
+}
+
+.box:hover {
+	transition-delay: .5s;
+	border: 10px solid grey;
+	box-shadow: 0 20px 15px rgba(0, 0, 0, .4s);
+}
+/*여기까지 레이아웃 박스 소스*/
+/*밑에 슬라이드 쇼 레이아웃 박스 */
+#slider {
+	height: 350px;
+	width: 90%;
+	margin: auto;
+	overflow: hidden;
+	background: transparent;
+}
+
+.slide {
+	height: 350px;
+	float: left;
+	text-align: center;
+	border: 1px solid #fff;
+	line-height: 8em;
+	font-size: 46px;
+}
+/*밑에 슬라이드 쇼 레이아웃 박스 여기까지 */
+/*여기서 부터 table 소스*/
+table, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+table {
+	width: 100%;
+	height: 50%;
+}
+
+td {
+	padding: 10px;
+	text-align: center;
+	align-content: center;
+}
+/*여기까지 table 소스*/
+/*여기서부터 search 소스*/
+.search {
+	margin-left: 15px;
+	padding-left: 200px;
+	width: 70%;
+	position: relative;
+}
+
+.searchterm {
+	margin-left: 100px;
+	padding-left: 200px;
+	float: left;
+	width: 70%;
+	border: 3px solid #00B4CC;
+	padding: 11px;
+	font-size: 17px;
+	outline: none;
+}
+
+.searchbtn {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #00B4CC;
+	background-color: #00B4CC;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#select {
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	border: 1px solid #00B4CC;
+	background-color: #00B4CC;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	font-size: 10px;
+}
+/*여기까지 search 소스*/
+b {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: 30px;
+	transform: translate(-50%, -50%);
+	width: 180px;
+	height: 50px;
+	background: white;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 50px;
+	color: #3C3C8C;
+	text-decoration: none;
+	font-size: 20px;
+	letter-spacing: 4px;
+}
+
+b:before, b:after, b span:before, b  span:after {
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: #3C3C8C;
+	transition: 1s;
+	mix-blend-mode: hue;
+}
+
+b:before {
+	top: -2px;
+	left: -2px;
+}
+
+b:after {
+	top: -2px;
+	right: -2px;
+}
+
+b span:before {
+	bottom: -2px;
+	left: -2px;
+}
+
+b span:after {
+	bottom: -2px;
+	right: -2px;
+}
+
+b:hover:before, b:hover:after, b:hover span:before, b:hover span:after {
+	width: calc(180px/ 2);
+	height: calc(50px/ 2);
+}
